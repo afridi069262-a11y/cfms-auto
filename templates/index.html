@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFMS Auto — Punjab Prosecution</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg:#060810;--s1:#0b0d14;--s2:#0f1219;--s3:#141820;
+  --b1:rgba(255,255,255,0.05);--b2:rgba(255,255,255,0.09);--b3:rgba(255,255,255,0.14);
+  --acc:#4f8ef7;--acc2:#1a56db;
+  --ok:#22c55e;--ok-bg:rgba(34,197,94,0.08);--ok-b:rgba(34,197,94,0.2);
+  --warn:#f59e0b;--warn-bg:rgba(245,158,11,0.08);--warn-b:rgba(245,158,11,0.2);
+  --err:#f43f5e;--err-bg:rgba(244,63,94,0.08);--err-b:rgba(244,63,94,0.2);
+  --skip:#a78bfa;--skip-bg:rgba(167,139,250,0.08);--skip-b:rgba(167,139,250,0.2);
+  --txt:#dde3f0;--txt2:#7e8ca8;--txt3:#3d4a60;
+  --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;
+  --r:8px;--r2:5px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:14px;min-height:100vh}
+
+/* HEADER */
+header{height:52px;background:rgba(6,8,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-mark{width:26px;height:26px;background:linear-gradient(135deg,var(--acc),#7c3aed);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:14px;height:14px;fill:#fff}
+.logo-name{font-size:13px;font-weight:700;letter-spacing:.3px}
+.logo-dept{font-size:10px;color:var(--txt2);margin-top:1px}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.conn-pill{display:flex;align-items:center;gap:6px;padding:4px 11px;border-radius:99px;border:1px solid var(--b2);font-size:11px;font-family:var(--mono);background:var(--s2)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--err);flex-shrink:0}
+.dot.live{background:var(--ok);box-shadow:0 0 0 3px rgba(34,197,94,0.15);animation:blink 2s infinite}
+@keyframes blink{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,0.15)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0.05)}}
+.pros-tag{background:rgba(79,142,247,0.12);color:#93c5fd;border:1px solid rgba(79,142,247,0.2);border-radius:99px;padding:3px 10px;font-size:11px;font-family:var(--mono);display:none}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 52px)}
+
+/* SIDEBAR */
+.sidebar{background:var(--s1);border-right:1px solid var(--b1);padding:16px 0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;display:flex;flex-direction:column}
+.nav-sec{font-size:9px;letter-spacing:1.8px;color:var(--txt3);font-weight:700;text-transform:uppercase;padding:10px 18px 4px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 10px;margin:1px 10px;border-radius:var(--r2);cursor:pointer;color:var(--txt2);font-size:12px;font-weight:500;transition:all .12s;border:1px solid transparent;user-select:none}
+.nav-item:hover{background:var(--s3);color:var(--txt)}
+.nav-item.active{background:rgba(79,142,247,0.1);color:var(--acc);border-color:rgba(79,142,247,0.18)}
+.nav-item svg{width:14px;height:14px;flex-shrink:0;opacity:.7}
+.nav-item.active svg{opacity:1}
+.nav-div{height:1px;background:var(--b1);margin:10px 12px}
+.stats-grid{padding:10px 12px;margin-top:auto}
+.stat-box{background:var(--s2);border:1px solid var(--b1);border-radius:var(--r2);padding:10px 12px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.stat-val{font-size:22px;font-weight:700;font-family:var(--mono)}
+.stat-lbl{font-size:10px;color:var(--txt2);margin-top:1px}
+.stat-box.c-ok .stat-val{color:var(--ok)}
+.stat-box.c-warn .stat-val{color:var(--warn)}
+.stat-box.c-err .stat-val{color:var(--err)}
+.stat-box.c-skip .stat-val{color:var(--skip)}
+.stat-box.c-acc .stat-val{color:var(--acc)}
+
+/* MAIN */
+.main{padding:24px;overflow-x:hidden}
+.panel{display:none}.panel.active{display:block}
+.pg-title{font-size:18px;font-weight:700;margin-bottom:2px}
+.pg-sub{font-size:12px;color:var(--txt2);margin-bottom:20px}
+
+/* CARDS */
+.card{background:var(--s2);border:1px solid var(--b1);border-radius:var(--r);padding:18px;margin-bottom:14px}
+.card-hd{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt3);margin-bottom:12px}
+
+/* FORMS */
+label{font-size:11px;font-weight:600;color:var(--txt2);display:block;margin-bottom:4px}
+input,textarea,select{width:100%;padding:9px 11px;background:var(--bg);border:1px solid var(--b2);border-radius:var(--r2);color:var(--txt);font-size:12px;font-family:var(--mono);outline:none;transition:border .15s}
+input:focus,textarea:focus{border-color:var(--acc)}
+textarea{resize:vertical;line-height:1.7}
+.frow{margin-bottom:12px}
+
+/* CURL EXTRACT */
+.curl-ta{min-height:80px;font-size:11px}
+.ef-box{display:none;margin-top:10px;border:1px solid var(--b1);border-radius:var(--r2);overflow:hidden}
+.ef-row{display:flex;border-bottom:1px solid var(--b1)}
+.ef-row:last-child{border-bottom:none}
+.ef-k{font-size:10px;font-family:var(--mono);color:var(--txt3);padding:7px 10px;background:var(--s3);min-width:70px;font-weight:600}
+.ef-v{font-size:10px;font-family:var(--mono);color:var(--ok);padding:7px 10px;word-break:break-all;line-height:1.4}
+
+/* BUTTONS */
+.btn{padding:8px 16px;border:none;border-radius:var(--r2);cursor:pointer;font-size:12px;font-weight:600;font-family:var(--sans);transition:all .12s;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:active{transform:scale(.97)}.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-p{background:var(--acc);color:#fff}.btn-p:hover:not(:disabled){background:#3b7de8}
+.btn-ok{background:var(--ok);color:#fff}.btn-ok:hover:not(:disabled){background:#16a34a}
+.btn-g{background:var(--s3);color:var(--txt2);border:1px solid var(--b2)}.btn-g:hover:not(:disabled){color:var(--txt)}
+.btn-sm{padding:6px 12px;font-size:11px}
+.brow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:14px}
+
+/* ALERTS */
+.alert{padding:9px 12px;border-radius:var(--r2);font-size:11px;font-family:var(--mono);display:none;margin-top:10px;align-items:flex-start;gap:7px}
+.alert.show{display:flex}
+.alert-ok{background:var(--ok-bg);border:1px solid var(--ok-b);color:#86efac}
+.alert-err{background:var(--err-bg);border:1px solid var(--err-b);color:#fda4af}
+.alert-info{background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);color:#93c5fd}
+
+/* PROSECUTOR */
+.pros-wrap{position:relative}
+#pros-badge{position:absolute;right:9px;top:50%;transform:translateY(-50%);background:rgba(79,142,247,0.15);color:var(--acc);border-radius:4px;padding:2px 7px;font-size:10px;font-family:var(--mono);font-weight:600;display:none}
+#pros-dd{position:absolute;z-index:99;width:100%;background:var(--s3);border:1px solid var(--b2);border-radius:var(--r2);margin-top:3px;max-height:220px;overflow-y:auto;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.7)}
+.pros-opt{padding:9px 12px;cursor:pointer;font-size:12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--b1);transition:background .1s}
+.pros-opt:last-child{border-bottom:none}
+.pros-opt:hover{background:var(--s2)}
+.pros-opt-id{font-size:10px;color:var(--txt3);font-family:var(--mono)}
+
+/* TIP */
+.tip{background:rgba(79,142,247,0.05);border-left:2px solid var(--acc);padding:9px 12px;border-radius:0 var(--r2) var(--r2) 0;font-size:11px;color:var(--txt2);margin-bottom:12px;font-family:var(--mono);line-height:1.6}
+
+/* LOGS */
+#log-area{background:#030408;border:1px solid var(--b1);border-radius:var(--r);padding:12px;height:340px;overflow-y:auto;font-family:var(--mono);font-size:11px;line-height:1.9}
+.ll{white-space:pre-wrap;word-break:break-all}
+.ll.ok{color:#4ade80}.ll.err{color:#fb7185}.ll.warn{color:#fbbf24}.ll.info{color:#60a5fa}.ll.dim{color:var(--txt3)}.ll.sep{color:#1e293b}
+.log-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.log-lbl{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--txt3);text-transform:uppercase}
+.spin{width:12px;height:12px;border:2px solid var(--b2);border-top-color:var(--acc);border-radius:50%;animation:spin .6s linear infinite;display:none}
+.spin.on{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.run-st{display:flex;align-items:center;gap:8px;font-size:11px;font-family:var(--mono);color:var(--txt2)}
+
+/* TABLES */
+.tbl-section{margin-top:20px}
+.tbl-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.tbl-title{font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px}
+.tbl-title.c-err{color:var(--err)}.tbl-title.c-skip{color:var(--skip)}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:99px;font-size:10px;font-weight:700;font-family:var(--mono)}
+.badge-err{background:var(--err-bg);color:var(--err)}.badge-skip{background:var(--skip-bg);color:var(--skip)}
+.tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--b1)}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{background:var(--s3);color:var(--txt3);font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:9px 12px;text-align:left;border-bottom:1px solid var(--b1);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--b1);color:var(--txt);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.012)}
+.td-m{font-family:var(--mono);font-size:10px}
+.td-err{font-family:var(--mono);font-size:10px;color:var(--err)}
+.td-skip{font-family:var(--mono);font-size:10px;color:var(--skip)}
+.td-num{color:var(--txt3);font-family:var(--mono);font-size:10px}
+.empty-st{text-align:center;padding:28px;color:var(--txt3);font-size:12px}
+.chip{display:inline-block;border-radius:4px;padding:2px 7px;font-size:10px;font-family:var(--mono);font-weight:600}
+.chip-warn{background:var(--warn-bg);color:var(--warn)}
+.chip-err{background:var(--err-bg);color:var(--err)}
+.chip-skip{background:var(--skip-bg);color:var(--skip)}
+
+/* DECISIONS REFERENCE */
+.dec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:4px}
+.dec-card{background:var(--s3);border:1px solid var(--b1);border-radius:var(--r2);padding:12px 14px}
+.dec-key{font-size:12px;font-weight:700;color:var(--txt);font-family:var(--mono);margin-bottom:4px}
+.dec-val{font-size:11px;color:var(--txt2)}
+.dec-val span{color:var(--acc);font-family:var(--mono)}
+.dec-urdu{font-size:13px;color:var(--warn);font-family:var(--mono);margin-bottom:2px}
+.format-box{background:var(--bg);border:1px solid var(--b2);border-radius:var(--r2);padding:10px 14px;font-family:var(--mono);font-size:11px;color:var(--ok);line-height:1.8;margin-bottom:10px}
+.format-col{color:var(--warn);font-weight:600}
+.warn-box{background:var(--err-bg);border:1px solid var(--err-b);border-radius:var(--r2);padding:10px 14px;font-size:11px;color:#fda4af;line-height:1.7;margin-bottom:10px}
+
+::-webkit-scrollbar{width:3px;height:3px}
+::-webkit-scrollbar-thumb{background:var(--b2);border-radius:99px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <div class="logo-mark"><svg viewBox="0 0 16 16"><path d="M8 1L1 4v4c0 4 3 6.5 7 8 4-1.5 7-4 7-8V4L8 1z"/></svg></div>
+    <div><div class="logo-name">CFMS AUTO</div><div class="logo-dept">Punjab Prosecution Department</div></div>
+  </div>
+  <div class="hdr-r">
+    <div class="pros-tag" id="hdr-pros"></div>
+    <div class="conn-pill"><span class="dot" id="hdr-dot"></span><span id="hdr-txt">Disconnected</span></div>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="nav-sec">Menu</div>
+  <div class="nav-item active" onclick="go('session',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="12" height="9" rx="1.5"/><path d="M5 6V4a3 3 0 016 0v2"/></svg>
+    Session &amp; Auth
+  </div>
+  <div class="nav-item" onclick="go('run',this)">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 3l9 5-9 5V3z"/></svg>
+    Run Script
+  </div>
+  <div class="nav-item" onclick="go('ref',this)">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h12M2 8h8M2 13h5"/></svg>
+    Valid Decisions
+  </div>
+  <div class="nav-div"></div>
+  <div class="nav-sec">Live Stats</div>
+  <div class="stats-grid">
+    <div class="stat-box c-acc"><div><div class="stat-val" id="sb-tot">0</div><div class="stat-lbl">Total</div></div></div>
+    <div class="stat-box c-ok"><div><div class="stat-val" id="sb-ok">0</div><div class="stat-lbl">Success</div></div></div>
+    <div class="stat-box c-warn"><div><div class="stat-val" id="sb-skip">0</div><div class="stat-lbl">Skipped</div></div></div>
+    <div class="stat-box c-err"><div><div class="stat-val" id="sb-inv">0</div><div class="stat-lbl">Invalid</div></div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+<!-- SESSION -->
+<div id="panel-session" class="panel active">
+  <div class="pg-title">Session &amp; Auth</div>
+  <div class="pg-sub">Browser cURL paste karo — tokens auto-extract honge.</div>
+  <div class="card">
+    <div class="card-hd">cURL Auto-Extract</div>
+    <div class="frow">
+      <label>F12 → Network → kisi request pe right-click → Copy as cURL</label>
+      <textarea class="curl-ta" id="curl-in" rows="5" placeholder="curl 'https://cfms.prosecution.punjab.gov.pk/...' -b 'XSRF-TOKEN=eyJ...' ..."></textarea>
+    </div>
+    <div class="ef-box" id="ef-box">
+      <div class="ef-row"><span class="ef-k">XSRF</span><span class="ef-v" id="ef-xsrf">—</span></div>
+      <div class="ef-row"><span class="ef-k">Session</span><span class="ef-v" id="ef-sess">—</span></div>
+    </div>
+    <div class="brow">
+      <button class="btn btn-p" onclick="doExtract()">&#9889; Extract &amp; Connect</button>
+    </div>
+    <div id="msg-sess" class="alert"></div>
+  </div>
+  <div class="card" id="pros-section" style="display:none">
+    <div class="card-hd">Prosecutor</div>
+    <div class="frow" style="position:relative">
+      <label>Prosecutor Name / ID</label>
+      <div style="position:relative">
+        <input id="pros-in" type="text" placeholder="Search by name or ID..." autocomplete="off" onfocus="showP()" onblur="hideP()" oninput="filterP(this.value)" style="background:var(--bg);color:var(--txt);border:1px solid var(--b2);padding:9px 11px;border-radius:var(--r2);width:100%;font-size:12px;box-sizing:border-box">
+        <span id="pros-badge"></span>
+        <div id="pros-dd"></div>
+      </div>
+      <select id="pros-sel" style="display:none"></select>
+    </div>
+    <div class="brow">
+      <button class="btn btn-ok btn-sm" onclick="setP()">&#10003; Set Prosecutor</button>
+    </div>
+    <div id="msg-pros" class="alert"></div>
+  </div>
+</div>
+
+<!-- RUN -->
+<div id="panel-run" class="panel">
+  <div class="pg-title">Run Script</div>
+  <div class="pg-sub">Data paste karo aur run karo.</div>
+  <div class="card">
+    <div class="card-hd">Input Data</div>
+    <div class="tip">Format (tab-separated): Sr &nbsp;›&nbsp; FIR_No &nbsp;›&nbsp; Year &nbsp;›&nbsp; Offence &nbsp;›&nbsp; Station &nbsp;›&nbsp; Date(DD-MM-YY) &nbsp;›&nbsp; Decision</div>
+    <div class="frow">
+      <textarea id="inp" rows="8" placeholder="1&#9;711&#9;2024&#9;380/457/411&#9;Shafiqabad&#9;01-01-24&#9;Convicted"></textarea>
+    </div>
+    <div class="brow">
+      <button class="btn btn-p" id="run-btn" onclick="runScript()">&#9654; Run</button>
+      <button class="btn btn-g btn-sm" onclick="clearAll()">Clear All</button>
+      <div class="run-st"><div class="spin" id="spin"></div><span id="run-st-txt">Ready</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="log-bar">
+      <span class="log-lbl">Live Output</span>
+      <div class="brow" style="margin-top:0;gap:6px">
+        <button class="btn btn-g btn-sm" onclick="toggleAS()">Autoscroll: <span id="as-lbl">ON</span></button>
+        <button class="btn btn-g btn-sm" onclick="document.getElementById('log-area').innerHTML=''">Clear</button>
+      </div>
+    </div>
+    <div id="log-area"></div>
+  </div>
+
+  <!-- INVALID TABLE -->
+  <div class="tbl-section" id="inv-section" style="display:none">
+    <div class="tbl-hd">
+      <div class="tbl-title c-err">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm-.75 4h1.5v4.5h-1.5V5zm.75 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
+        Invalid / Failed Cases
+        <span class="badge badge-err" id="inv-cnt">0</span>
+      </div>
+      <button class="btn btn-g btn-sm" onclick="clearInv()">Clear</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>FIR No</th><th>Year</th><th>Station</th><th>Offence</th><th>Decision</th><th>Reason</th></tr></thead>
+        <tbody id="inv-body"><tr><td colspan="7" class="empty-st">No invalid cases</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SKIPPED TABLE -->
+  <div class="tbl-section" id="skip-section" style="display:none">
+    <div class="tbl-hd">
+      <div class="tbl-title c-skip">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.5 7.5h-7v-1.5h7v1.5z"/></svg>
+        Skipped Cases
+        <span class="badge badge-skip" id="skip-cnt">0</span>
+      </div>
+      <button class="btn btn-g btn-sm" onclick="clearSkip()">Clear</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>#</th><th>FIR No</th><th>Year</th><th>Station</th><th>Offence</th><th>Decision</th><th>Reason</th></tr></thead>
+        <tbody id="skip-body"><tr><td colspan="7" class="empty-st">No skipped cases</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- VALID DECISIONS REFERENCE -->
+<div id="panel-ref" class="panel">
+  <div class="pg-title">Valid Decisions Reference</div>
+  <div class="pg-sub">Exactly yahi words script accept karta hai — ek bhi dot, space ya extra letter mana nahi jaiga (fuzzy match 50%+ hota hai).</div>
+
+  <div class="card" style="border-color:rgba(244,63,94,0.2)">
+    <div class="card-hd" style="color:var(--err)">Input Format — Strict</div>
+    <div class="format-box">
+<span class="format-col">Sr</span> [TAB] <span class="format-col">FIR_No</span> [TAB] <span class="format-col">Year</span> [TAB] <span class="format-col">Offence</span> [TAB] <span class="format-col">Station</span> [TAB] <span class="format-col">Date</span> [TAB] <span class="format-col">Decision</span>
+    </div>
+    <div class="warn-box">
+      &#9888; Date format: <strong>DD-MM-YY</strong> ya <strong>DD-MM-YYYY</strong> — dots bhi chalte hain (01.01.24)<br>
+      &#9888; Fields tab-separated hone chahiye — spaces se nahi chalega<br>
+      &#9888; Decision fuzzy match hota hai — lekin jitna exact utna behtar
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd">English Decisions</div>
+    <div class="dec-grid">
+      <div class="dec-card"><div class="dec-key">Convicted</div><div class="dec-val">→ <span>Conviction / Other imprisonment</span></div></div>
+      <div class="dec-card"><div class="dec-key">Acquitted</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-key">Acquitted Due to Compromised</div><div class="dec-val">→ <span>Acquittal / Due to Compromise</span></div></div>
+      <div class="dec-card"><div class="dec-key">Agreed</div><div class="dec-val">→ <span>Cancellation accepted by court</span></div></div>
+      <div class="dec-card"><div class="dec-key">Fined</div><div class="dec-val">→ <span>Conviction / Fine only</span></div></div>
+      <div class="dec-card"><div class="dec-key">Probation</div><div class="dec-val">→ <span>Conviction / Other imprisonment</span></div></div>
+      <div class="dec-card"><div class="dec-key">Dismissed</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-key">u/s 249-A</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-key">u/s 249-A CrPC</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-key">u/s 345 Cr.P.C</div><div class="dec-val">→ <span>Acquittal / Due to Compromise</span></div></div>
+      <div class="dec-card"><div class="dec-key">Consign to Record u/s 512</div><div class="dec-val">→ <span>Consign to Record / 512 Cr.P.C</span></div></div>
+      <div class="dec-card"><div class="dec-key">Consign to Record Room</div><div class="dec-val">→ <span>Consign to Record / 512 Cr.P.C</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hd">Urdu Decisions</div>
+    <div class="dec-grid">
+      <div class="dec-card"><div class="dec-urdu">منظور شد</div><div class="dec-val">→ <span>Cancellation accepted by court</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">منظورشد</div><div class="dec-val">→ <span>Cancellation accepted by court</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">داخل دفتر زیردفعہ512</div><div class="dec-val">→ <span>Consign to Record / 512 Cr.P.C</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">داخل دفتر</div><div class="dec-val">→ <span>Consign to Record / 512 Cr.P.C</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">زیردفعہ 249-A</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">خارج شدبوجہ عدم پیروی</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">خارج شد</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">خارج</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">بری شدبصیغہ راضی نامہ</div><div class="dec-val">→ <span>Acquittal / Due to Compromise</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">فیصلہ شد</div><div class="dec-val">→ <span>Consign to Record / Untraced Report</span></div></div>
+      <div class="dec-card"><div class="dec-urdu">بری شد</div><div class="dec-val">→ <span>Acquittal / Poor Investigation</span></div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+let autoScroll=true, evtSrc=null, allP=[], selPId=null, invCases=[], skipCases=[], curCase=null;
+
+function go(n,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+  document.getElementById('panel-'+n).classList.add('active');
+  el.classList.add('active');
+}
+function msg(id,txt,t){const e=document.getElementById(id);e.textContent=txt;e.className='alert show alert-'+(t==='ok'?'ok':t==='err'?'err':'info');}
+
+function extractTokens(c){
+  const bm=c.match(/-b '([^']+)'/);
+  const cs=bm?bm[1]:c;
+  const x=(cs.match(/XSRF-TOKEN=([^;]+)/)||[])[1]||'';
+  const s=(cs.match(/prosecution_department_of_punjab_session=([^;]+)/)||[])[1]||'';
+  const xt=x.trim(),st=s.trim();
+  return{xsrf:decodeURIComponent(xt),session:decodeURIComponent(st),xsrf_raw:xt,session_raw:st};
+}
+
+document.getElementById('curl-in').addEventListener('input',function(){
+  const{xsrf,session}=extractTokens(this.value);
+  if(xsrf||session){
+    document.getElementById('ef-xsrf').textContent=xsrf?xsrf.substring(0,70)+'...':'—';
+    document.getElementById('ef-sess').textContent=session?session.substring(0,70)+'...':'—';
+    document.getElementById('ef-box').style.display='block';
+  }
+});
+
+async function doExtract(){
+  const curl=document.getElementById('curl-in').value.trim();
+  if(!curl){msg('msg-sess','cURL paste karo','err');return;}
+  const tok=extractTokens(curl);const xsrf=tok.xsrf,session=tok.session,x_raw=tok.xsrf_raw,s_raw=tok.session_raw;
+  if(!xsrf||!session){msg('msg-sess','Tokens nahi mile — puri cURL copy karo','err');return;}
+  msg('msg-sess','Connecting...','info');
+  try{
+    const r=await fetch('/api/session-manual',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({xsrf,session_cookie:session,xsrf_raw:x_raw,session_raw:s_raw,curl_text:curl})});
+    const d=await r.json();
+    msg('msg-sess',d.msg,d.ok?'ok':'err');
+    if(d.ok){
+      setConn(true);
+      loadP(d.prosecutors||[]);
+    }
+  }catch(e){msg('msg-sess','Error: '+e,'err');}
+}
+
+async function loadP(){
+  document.getElementById('pros-section').style.display='block';
+  try{const r=await fetch('/api/get-prosecutors');const d=await r.json();if(d.ok)allP=d.prosecutors;}catch(e){}
+}
+
+function filterP(v){
+  const dd=document.getElementById('pros-dd');
+  if(!v.trim()){dd.style.display='none';return;}
+  const f=allP.filter(p=>p.name.toLowerCase().includes(v.toLowerCase())||String(p.id).includes(v)).slice(0,15);
+  if(!f.length){dd.style.display='none';return;}
+  dd.innerHTML=f.map(p=>`<div class="pros-opt" onmousedown="selP(${p.id},'${p.name.replace(/'/g,"\\'")}')"><span>${p.name}</span><span class="pros-opt-id">ID ${p.id}</span></div>`).join('');
+  dd.style.display='block';
+}
+function selP(id,name){selPId=id;document.getElementById('pros-in').value=name;document.getElementById('pros-badge').textContent='ID '+id;document.getElementById('pros-badge').style.display='block';document.getElementById('pros-dd').style.display='none';}
+function showP(){const v=document.getElementById('pros-in').value;if(v.trim())filterP(v);}
+function hideP(){setTimeout(()=>{document.getElementById('pros-dd').style.display='none';},150);}
+
+async function setP(){
+  const pid=selPId?parseInt(selPId):null;
+  if(!pid){msg('msg-pros','Prosecutor select karo','err');return;}
+  const r=await fetch('/api/set-prosecutor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prosecutor_id:pid})});
+  const d=await r.json();
+  msg('msg-pros',d.msg,d.ok?'ok':'err');
+  if(d.ok){document.getElementById('hdr-pros').textContent='Prosecutor #'+pid;document.getElementById('hdr-pros').style.display='block';}
+}
+
+function setConn(on){
+  document.getElementById('hdr-dot').className='dot'+(on?' live':'');
+  document.getElementById('hdr-txt').textContent=on?'Connected':'Disconnected';
+}
+
+async function runScript(){
+  const data=document.getElementById('inp').value.trim();
+  if(!data){alert('Data paste karo');return;}
+  const btn=document.getElementById('run-btn');btn.disabled=true;
+  document.getElementById('spin').className='spin on';
+  document.getElementById('run-st-txt').textContent='Running...';
+  try{
+    const r=await fetch('/api/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({input_text:data})});
+    const d=await r.json();
+    if(!d.ok){alert(d.msg);btn.disabled=false;document.getElementById('spin').className='spin';return;}
+    startSSE();
+  }catch(e){alert('Error: '+e);btn.disabled=false;document.getElementById('spin').className='spin';}
+}
+
+function startSSE(){
+  if(evtSrc)evtSrc.close();
+  evtSrc=new EventSource('/api/stream-logs');
+  evtSrc.onmessage=function(e){
+    const d=JSON.parse(e.data);
+    if(d.type==='log') processLog(d.msg);
+    else if(d.type==='case_invalid') addCaseRow(d.case,'invalid');
+    else if(d.type==='case_skip') addCaseRow(d.case,'skip');
+    else if(d.type==='done'){
+      addLog('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━','sep');
+      addLog('Done — Success: '+d.stats.success+' | Skip: '+d.stats.skip+' | Invalid: '+d.stats.invalid,'ok');
+      document.getElementById('run-btn').disabled=false;
+      document.getElementById('spin').className='spin';
+      document.getElementById('run-st-txt').textContent='Done';
+      updStats(d.stats);evtSrc.close();
+    }
+  };
+}
+
+function processLog(msg){
+  addLog(msg);
+  // extract current case from separator line
+  const m=msg.match(/FIR\s+(\S+)\s+\|\s+(.+?)\s+\|\s+Offence:\s+(.+?)\s+\|\s+Decision:\s+(\S+)/);
+  if(m){
+    const parts=m[1].split('/');
+    curCase={fir:parts[0]||'?',year:parts[1]||'?',station:m[2].trim(),offence:m[3].trim(),decision:m[4].trim(),reason:''};
+  }
+  // fallback: parse from log if structured event not received
+  const im=msg.match(/Invalid reason:\s*([^\|]+)/);
+  if(im&&curCase&&!curCase._handled){curCase.reason=im[1].trim();curCase._handled=true;}
+}
+
+function addCaseRow(c,type){
+  const isInv=type==='invalid';
+  const arr=isInv?invCases:skipCases;
+  arr.push(c);
+  const secId=isInv?'inv-section':'skip-section';
+  const cntId=isInv?'inv-cnt':'skip-cnt';
+  const bodyId=isInv?'inv-body':'skip-body';
+  document.getElementById(secId).style.display='block';
+  document.getElementById(cntId).textContent=arr.length;
+  const tb=document.getElementById(bodyId);
+  if(tb.querySelector('.empty-st'))tb.innerHTML='';
+  const chipCls=isInv?'chip-err':'chip-skip';
+  const tdCls=isInv?'td-err':'td-skip';
+  const tr=document.createElement('tr');
+  tr.innerHTML=`
+    <td class="td-num">${arr.length}</td>
+    <td class="td-m" style="color:var(--acc);font-weight:700">${c.fir||'?'}</td>
+    <td class="td-m">${c.year||'?'}</td>
+    <td style="font-size:11px">${c.station||'?'}</td>
+    <td class="td-m" style="color:var(--txt2)">${c.offence||'?'}</td>
+    <td><span class="chip ${chipCls}">${c.decision||'?'}</span></td>
+    <td class="${tdCls}">${c.reason||'—'}</td>`;
+  tb.appendChild(tr);
+  updStats(null);
+}
+
+function clearInv(){invCases=[];document.getElementById('inv-body').innerHTML='<tr><td colspan="7" class="empty-st">No invalid cases</td></tr>';document.getElementById('inv-cnt').textContent='0';}
+function clearSkip(){skipCases=[];document.getElementById('skip-body').innerHTML='<tr><td colspan="7" class="empty-st">No skipped cases</td></tr>';document.getElementById('skip-cnt').textContent='0';}
+
+function addLog(msg,ft){
+  const la=document.getElementById('log-area');
+  const d=document.createElement('div');
+  let t=ft;
+  if(!t){if(msg.includes('✅'))t='ok';else if(msg.includes('❌')||msg.toLowerCase().includes('error')||msg.toLowerCase().includes('failed'))t='err';else if(msg.includes('⚠️')||msg.toLowerCase().includes('warn'))t='warn';else if(msg.includes('━')||msg.includes('─')||msg.includes('═'))t='sep';else t='info';}
+  d.className='ll '+t;d.textContent=msg;la.appendChild(d);
+  if(autoScroll)la.scrollTop=la.scrollHeight;
+}
+
+function updStats(s){
+  if(!s)return;
+  document.getElementById('sb-tot').textContent=s.total;
+  document.getElementById('sb-ok').textContent=s.success;
+  document.getElementById('sb-skip').textContent=s.skip;
+  document.getElementById('sb-inv').textContent=s.invalid;
+}
+
+function clearAll(){document.getElementById('log-area').innerHTML='';clearInv();clearSkip();updStats({total:0,success:0,skip:0,invalid:0});}
+function toggleAS(){autoScroll=!autoScroll;document.getElementById('as-lbl').textContent=autoScroll?'ON':'OFF';}
+
+(async function(){
+  try{
+    const r=await fetch('/api/status');const d=await r.json();
+    if(d.logged_in){setConn(true);loadP();}
+    if(d.prosecutor_id){document.getElementById('hdr-pros').textContent='Prosecutor #'+d.prosecutor_id;document.getElementById('hdr-pros').style.display='block';}
+    if(d.stats)updStats(d.stats);
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

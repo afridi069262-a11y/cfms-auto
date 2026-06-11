@@ -1,0 +1,10 @@
+4	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+4	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+State  VS  Zeeshan Amin	59	2021	489-F PPC	Gulshan Ravi	21-04-2026	Acquitted Due to Compromised
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+State  VS  Zeeshan Amin	59	2021	489-F PPC	Gulshan Ravi	21-04-2026	Acquitted Due to Compromised
+The State  VS  Rizwan ul Haq	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+The State  VS  Arif Ali	6	2026	489-F PPC	Gulshan Ravi	20-04-2026	Consign to Record u/s 512
+0  VS  0			0		14-04-2026	Disposed Off
+0  VS  0			0		14-04-2026	Disposed Off
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
