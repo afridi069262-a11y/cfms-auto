@@ -987,6 +987,14 @@ class ApiSession:
 
     def __init__(self):
         self.session = requests.Session()
+        pk_proxies = [
+            'http://103.152.112.157:80',
+            'http://103.82.22.42:8080',
+            'http://202.59.10.254:3128',
+        ]
+        import random
+        proxy = random.choice(pk_proxies)
+        self.session.proxies = {'http': proxy, 'https': proxy}
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/143.0.0.0 Safari/537.36",
             "Accept": "application/json, text/plain, */*",
