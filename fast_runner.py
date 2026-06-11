@@ -987,7 +987,26 @@ class ApiSession:
 
     def __init__(self):
         self.session = requests.Session()
-        self.session.proxies = {'http': 'socks5://103.236.134.210:1080', 'https': 'socks5://103.236.134.210:1080'}
+        # Auto-rotate Pakistani proxies
+        pk_proxies = [
+            ('socks5', '103.236.134.210:1080'),
+            ('socks5', '103.121.120.242:1080'),
+            ('http', '43.251.253.40:8080'),
+            ('http', '182.176.164.41:8080'),
+            ('http', '43.251.253.40:8080'),
+        ]
+        import requests as _r
+        working_proxy = None
+        for proto, proxy in pk_proxies:
+            try:
+                _r.get('https://cfms.prosecution.punjab.gov.pk/', proxies={'http': f'{proto}://{proxy}', 'https': f'{proto}://{proxy}'}, timeout=6)
+                working_proxy = (proto, proxy)
+                break
+            except:
+                continue
+        if working_proxy:
+            proto, proxy = working_proxy
+            self.session.proxies = {'http': f'{proto}://{proxy}', 'https': f'{proto}://{proxy}'}
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/143.0.0.0 Safari/537.36",
             "Accept": "application/json, text/plain, */*",
