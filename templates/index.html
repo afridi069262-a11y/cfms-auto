@@ -414,7 +414,7 @@ function filterP(v){
   dd.innerHTML=f.map(p=>`<div class="pros-opt" onmousedown="selP(${p.id},'${p.name.replace(/'/g,"\\'")}')"><span>${p.name}</span><span class="pros-opt-id">ID ${p.id}</span></div>`).join('');
   dd.style.display='block';
 }
-function selP(id,name){selPId=id;document.getElementById('pros-in').value=name;document.getElementById('pros-badge').textContent='ID '+id;document.getElementById('pros-badge').style.display='block';document.getElementById('pros-dd').style.display='none';}
+function selP(id,name){selPId=id;document.getElementById('pros-in').value=name;document.getElementById('pros-badge').textContent='ID '+id;document.getElementById('pros-badge').style.display='block';document.getElementById('pros-dd').style.display='none';localStorage.setItem('cfms_pros_id',id);localStorage.setItem('cfms_pros_name',name);}
 function showP(){const v=document.getElementById('pros-in').value;if(v.trim())filterP(v);}
 function hideP(){setTimeout(()=>{document.getElementById('pros-dd').style.display='none';},150);}
 
@@ -438,6 +438,14 @@ window.onload = function(){
   if(saved) document.getElementById('inp').value = saved;
   const savedCurl = localStorage.getItem('cfms_curl');
   if(savedCurl) document.getElementById('curl-in').value = savedCurl;
+  const savedPros = localStorage.getItem('cfms_pros_id');
+  const savedProsName = localStorage.getItem('cfms_pros_name');
+  if(savedPros && savedProsName){
+    selPId = parseInt(savedPros);
+    document.getElementById('pros-in').value = savedProsName;
+    document.getElementById('pros-badge').textContent = 'ID '+savedPros;
+    document.getElementById('pros-badge').style.display = 'block';
+  }
 }
 document.addEventListener('input', function(e){
   if(e.target.id === 'inp') localStorage.setItem('cfms_input', e.target.value);

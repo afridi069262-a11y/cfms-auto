@@ -14641,3 +14641,297 @@ FIR 4531/2024 | Shafiqabad | Offence: The Punjab Arms Ordinance, 1965-13 | Decis
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.10.9:5000
 2026-06-12 13:03:51,722 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-12 13:05:37,776 - INFO - 127.0.0.1 - - [12/Jun/2026 13:05:37] "GET / HTTP/1.1" 200 -
+2026-06-12 13:05:38,253 - INFO - 127.0.0.1 - - [12/Jun/2026 13:05:38] "GET /api/status HTTP/1.1" 200 -
+2026-06-12 13:05:43,614 - INFO - ✅ 2 cookies loaded
+2026-06-12 13:05:45,304 - INFO - ✅ 768 police stations loaded
+2026-06-12 13:05:45,307 - INFO - 127.0.0.1 - - [12/Jun/2026 13:05:45] "POST /api/session-manual HTTP/1.1" 200 -
+2026-06-12 13:05:45,559 - INFO - 127.0.0.1 - - [12/Jun/2026 13:05:45] "GET /api/get-prosecutors HTTP/1.1" 200 -
+2026-06-12 13:05:55,415 - INFO - 127.0.0.1 - - [12/Jun/2026 13:05:55] "POST /api/set-prosecutor HTTP/1.1" 200 -
+2026-06-12 13:05:59,833 - INFO - 127.0.0.1 - - [12/Jun/2026 13:05:59] "POST /api/run HTTP/1.1" 200 -
+2026-06-12 13:06:00,025 - INFO - 127.0.0.1 - - [12/Jun/2026 13:06:00] "GET /api/stream-logs HTTP/1.1" 200 -
+2026-06-12 13:06:00,916 - INFO - 
+============================================================
+FIR 2482/2024 | Shafiqabad | Offence: The Punjab Armed Ordinance 13 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:01,510 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:01,592 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-23."]}}
+2026-06-12 13:06:01,593 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:01,593 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:01,750 - INFO - ✅ Court created
+2026-06-12 13:06:01,751 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:01,931 - INFO - FIR view fetched for fir_id=4951492
+2026-06-12 13:06:01,931 - INFO - Framing: 'شوشیل ستار' → 1 accused section(s)
+2026-06-12 13:06:02,029 - WARNING - Framing failed 'شوشیل ستار': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:02,032 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:02,034 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:02,518 - INFO - ✅ 1 judgment entries
+2026-06-12 13:06:02,722 - INFO - ✅ Judgment updated: entry 7374725
+2026-06-12 13:06:02,723 - INFO - ✅ Case complete: FIR 2482/2024 | Shafiqabad
+2026-06-12 13:06:03,225 - INFO - 
+============================================================
+FIR 1119/2023 | Gulshan Ravi | Offence: 13-20-65 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:03,888 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:03,983 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-27."]}}
+2026-06-12 13:06:03,983 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:03,984 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:04,165 - INFO - ✅ Court created
+2026-06-12 13:06:04,166 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:04,344 - INFO - FIR view fetched for fir_id=3619324
+2026-06-12 13:06:04,345 - INFO - Framing: 'وقاص  ' → 1 accused section(s)
+2026-06-12 13:06:04,432 - WARNING - Framing failed 'وقاص  ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:04,433 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:04,434 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:04,856 - INFO - ✅ 1 judgment entries
+2026-06-12 13:06:05,046 - INFO - ✅ Judgment updated: entry 5171683
+2026-06-12 13:06:05,047 - INFO - ✅ Case complete: FIR 1119/2023 | Gulshan Ravi
+2026-06-12 13:06:05,550 - INFO - 
+============================================================
+FIR 663/2023 | Gulshan Ravi | Offence: 13-20-65 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:12,300 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:12,615 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-23."]}}
+2026-06-12 13:06:12,615 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:12,615 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:12,779 - INFO - ✅ Court created
+2026-06-12 13:06:12,780 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:12,935 - INFO - FIR view fetched for fir_id=3296182
+2026-06-12 13:06:12,935 - INFO - Framing: 'زاہد شوکت ' → 1 accused section(s)
+2026-06-12 13:06:13,016 - WARNING - Framing failed 'زاہد شوکت ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:13,019 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:13,021 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:13,388 - INFO - ✅ 1 judgment entries
+2026-06-12 13:06:13,578 - INFO - ✅ Judgment updated: entry 4681060
+2026-06-12 13:06:13,578 - INFO - ✅ Case complete: FIR 663/2023 | Gulshan Ravi
+2026-06-12 13:06:14,084 - INFO - 
+============================================================
+FIR 1346/2022 | Gulshan Ravi | Offence: 381A/411 PPC | Decision: Acquitted
+============================================================
+2026-06-12 13:06:14,760 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:14,839 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-14."]}}
+2026-06-12 13:06:14,840 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:14,840 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:14,992 - INFO - ✅ Court created
+2026-06-12 13:06:14,993 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:15,153 - INFO - FIR view fetched for fir_id=2818401
+2026-06-12 13:06:15,154 - INFO - Framing: 'Unknown' → 1 accused section(s)
+2026-06-12 13:06:15,235 - WARNING - Framing failed 'Unknown': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:15,235 - INFO - Framing: 'Unknown' → 1 accused section(s)
+2026-06-12 13:06:15,374 - INFO - 127.0.0.1 - - [12/Jun/2026 13:06:15] "GET /api/stream-logs HTTP/1.1" 200 -
+2026-06-12 13:06:15,558 - WARNING - Framing failed 'Unknown': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:15,559 - INFO - Framing: 'Unknown' → 1 accused section(s)
+2026-06-12 13:06:15,836 - WARNING - Framing failed 'Unknown': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:15,837 - INFO - Framing: 'محمد خان' → 2 accused section(s)
+2026-06-12 13:06:16,125 - WARNING - Framing failed 'محمد خان': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:16,129 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:16,131 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:16,574 - INFO - ✅ 4 judgment entries
+2026-06-12 13:06:16,870 - INFO - ✅ Judgment updated: entry 7990240
+2026-06-12 13:06:17,149 - INFO - ✅ Judgment updated: entry 4603401
+2026-06-12 13:06:17,412 - INFO - ✅ Judgment updated: entry 4577339
+2026-06-12 13:06:17,680 - INFO - ✅ Judgment updated: entry 4307681
+2026-06-12 13:06:17,680 - INFO - ✅ Case complete: FIR 1346/2022 | Gulshan Ravi
+2026-06-12 13:06:18,184 - INFO - 
+============================================================
+FIR 66/2025 | Gulshan Ravi | Offence: 406 PPC | Decision: Acquitted
+============================================================
+2026-06-12 13:06:18,863 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:18,950 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-28."]}}
+2026-06-12 13:06:18,951 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:18,952 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:19,111 - INFO - ✅ Court created
+2026-06-12 13:06:19,111 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:19,270 - INFO - FIR view fetched for fir_id=5583049
+2026-06-12 13:06:19,271 - INFO - Framing: 'عباس علی ' → 1 accused section(s)
+2026-06-12 13:06:19,364 - WARNING - Framing failed 'عباس علی ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:19,365 - INFO - Framing: 'سجاد علی ' → 1 accused section(s)
+2026-06-12 13:06:34,643 - WARNING - Framing exception: HTTPSConnectionPool(host='cfms.prosecution.punjab.gov.pk', port=443): Read timed out. (read timeout=15)
+2026-06-12 13:06:34,644 - INFO - Framing: 'محسن علی   ' → 1 accused section(s)
+2026-06-12 13:06:34,909 - WARNING - Framing failed 'محسن علی   ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:34,910 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:34,911 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:35,338 - INFO - ✅ 3 judgment entries
+2026-06-12 13:06:35,639 - INFO - ✅ Judgment updated: entry 8699458
+2026-06-12 13:06:35,954 - INFO - ✅ Judgment updated: entry 8699457
+2026-06-12 13:06:36,314 - INFO - ✅ Judgment updated: entry 8699456
+2026-06-12 13:06:36,315 - INFO - ✅ Case complete: FIR 66/2025 | Gulshan Ravi
+2026-06-12 13:06:36,827 - INFO - 
+============================================================
+FIR 2157/2023 | Shafiqabad | Offence: The punjab prohibition of sheesha smoking Act 2014-3 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:37,466 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:37,547 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-08."]}}
+2026-06-12 13:06:37,548 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:37,548 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:37,700 - INFO - ✅ Court created
+2026-06-12 13:06:37,701 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:37,854 - INFO - FIR view fetched for fir_id=3615133
+2026-06-12 13:06:37,854 - INFO - Framing: 'محفوظ الرحمن  ' → 1 accused section(s)
+2026-06-12 13:06:37,935 - WARNING - Framing failed 'محفوظ الرحمن  ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:37,937 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:37,938 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:38,289 - INFO - ✅ 1 judgment entries
+2026-06-12 13:06:38,494 - INFO - ✅ Judgment updated: entry 5092447
+2026-06-12 13:06:38,495 - INFO - ✅ Case complete: FIR 2157/2023 | Shafiqabad
+2026-06-12 13:06:39,006 - INFO - 
+============================================================
+FIR 3154/2024 | Shafiqabad | Offence: The Punjab Local Government Act 2022-7 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:39,822 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:39,901 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-21."]}}
+2026-06-12 13:06:39,902 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:39,902 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:40,061 - INFO - ✅ Court created
+2026-06-12 13:06:40,061 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:40,211 - INFO - FIR view fetched for fir_id=5166440
+2026-06-12 13:06:40,212 - INFO - Framing: 'ڈاکٹر فرحت' → 1 accused section(s)
+2026-06-12 13:06:40,291 - WARNING - Framing failed 'ڈاکٹر فرحت': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:40,293 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:40,294 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:41,000 - INFO - ✅ 1 judgment entries
+2026-06-12 13:06:41,197 - INFO - ✅ Judgment updated: entry 7757501
+2026-06-12 13:06:41,198 - INFO - ✅ Case complete: FIR 3154/2024 | Shafiqabad
+2026-06-12 13:06:41,700 - INFO - 
+============================================================
+FIR 2120/2024 | Gulshan Ravi | Offence: 3/4 PEHO | Decision: Acquitted
+============================================================
+2026-06-12 13:06:42,985 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:43,072 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-07."]}}
+2026-06-12 13:06:43,072 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:43,072 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:43,293 - INFO - ✅ Court created
+2026-06-12 13:06:43,293 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:43,499 - INFO - FIR view fetched for fir_id=5291963
+2026-06-12 13:06:43,499 - INFO - Framing: 'عباس روف ' → 2 accused section(s)
+2026-06-12 13:06:43,580 - WARNING - Framing failed 'عباس روف ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:43,581 - INFO - Framing: 'عزیر علی' → 2 accused section(s)
+2026-06-12 13:06:43,853 - WARNING - Framing failed 'عزیر علی': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:43,857 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:43,858 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:44,322 - INFO - ✅ 2 judgment entries
+2026-06-12 13:06:44,563 - INFO - ✅ Judgment updated: entry 8013028
+2026-06-12 13:06:44,802 - INFO - ✅ Judgment updated: entry 8013027
+2026-06-12 13:06:44,803 - INFO - ✅ Case complete: FIR 2120/2024 | Gulshan Ravi
+2026-06-12 13:06:45,309 - INFO - 
+============================================================
+FIR 4531/2024 | Shafiqabad | Offence: The Punjab Arms Ordinance, 1965-13 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:45,916 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:45,994 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-13."]}}
+2026-06-12 13:06:45,994 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:45,994 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:46,142 - INFO - ✅ Court created
+2026-06-12 13:06:46,142 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:46,292 - INFO - FIR view fetched for fir_id=5526143
+2026-06-12 13:06:46,293 - INFO - Framing: 'نور احمد ' → 1 accused section(s)
+2026-06-12 13:06:46,373 - WARNING - Framing failed 'نور احمد ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:46,375 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:46,376 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:46,764 - INFO - ✅ 1 judgment entries
+2026-06-12 13:06:46,946 - INFO - ✅ Judgment updated: entry 8438420
+2026-06-12 13:06:46,946 - INFO - ✅ Case complete: FIR 4531/2024 | Shafiqabad
+2026-06-12 13:06:47,449 - INFO - 
+============================================================
+FIR 700/2024 | Shafiqabad | Offence: The Punjab price control of essential commodities ordinance 2023-6-7-10 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:48,078 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:48,187 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-08."]}}
+2026-06-12 13:06:48,187 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:48,187 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:48,348 - INFO - ✅ Court created
+2026-06-12 13:06:48,348 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:48,504 - INFO - FIR view fetched for fir_id=4459116
+2026-06-12 13:06:48,504 - INFO - Framing: 'مدثر حسین ' → 3 accused section(s)
+2026-06-12 13:06:48,590 - WARNING - Framing failed 'مدثر حسین ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:48,590 - INFO - Framing: 'محمد علی ' → 3 accused section(s)
+2026-06-12 13:06:48,858 - WARNING - Framing failed 'محمد علی ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:48,858 - INFO - Framing: 'تنویر حمزہ ' → 3 accused section(s)
+2026-06-12 13:06:49,162 - WARNING - Framing failed 'تنویر حمزہ ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:49,165 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:49,165 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:49,229 - INFO - 127.0.0.1 - - [12/Jun/2026 13:06:49] "GET / HTTP/1.1" 200 -
+2026-06-12 13:06:49,699 - INFO - ✅ 3 judgment entries
+2026-06-12 13:06:49,767 - INFO - 127.0.0.1 - - [12/Jun/2026 13:06:49] "GET /api/status HTTP/1.1" 200 -
+2026-06-12 13:06:49,963 - INFO - 127.0.0.1 - - [12/Jun/2026 13:06:49] "GET /api/get-prosecutors HTTP/1.1" 200 -
+2026-06-12 13:06:50,037 - INFO - ✅ Judgment updated: entry 6577677
+2026-06-12 13:06:50,374 - INFO - ✅ Judgment updated: entry 6577676
+2026-06-12 13:06:50,695 - INFO - ✅ Judgment updated: entry 6577675
+2026-06-12 13:06:50,695 - INFO - ✅ Case complete: FIR 700/2024 | Shafiqabad
+2026-06-12 13:06:51,200 - INFO - 
+============================================================
+FIR 1800/2024 | Shafiqabad | Offence: The Punjab price control of essential commodities ordinance 2023-6-7-10 | Decision: Acquitted
+============================================================
+2026-06-12 13:06:52,939 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:06:53,022 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-08."]}}
+2026-06-12 13:06:53,023 - WARNING - Prosecution failed — continuing
+2026-06-12 13:06:53,023 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:06:53,183 - INFO - ✅ Court created
+2026-06-12 13:06:53,184 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:06:53,343 - INFO - FIR view fetched for fir_id=4726268
+2026-06-12 13:06:53,343 - INFO - Framing: 'ادریس' → 3 accused section(s)
+2026-06-12 13:06:53,439 - WARNING - Framing failed 'ادریس': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:53,439 - INFO - Framing: 'حمیداللہ ' → 3 accused section(s)
+2026-06-12 13:06:58,833 - WARNING - Framing failed 'حمیداللہ ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:06:58,836 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:06:58,836 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:06:59,273 - INFO - ✅ 2 judgment entries
+2026-06-12 13:06:59,572 - INFO - ✅ Judgment updated: entry 7083480
+2026-06-12 13:06:59,880 - INFO - ✅ Judgment updated: entry 7083479
+2026-06-12 13:06:59,880 - INFO - ✅ Case complete: FIR 1800/2024 | Shafiqabad
+2026-06-12 13:07:00,389 - INFO - 
+============================================================
+FIR 1811/2024 | Shafiqabad | Offence: The Punjab price control of essential commodities ordinance 2023-6-7-10 | Decision: Acquitted
+============================================================
+2026-06-12 13:07:01,346 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:07:01,503 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-23."]}}
+2026-06-12 13:07:01,504 - WARNING - Prosecution failed — continuing
+2026-06-12 13:07:01,504 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:07:01,655 - INFO - ✅ Court created
+2026-06-12 13:07:01,656 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:07:01,819 - INFO - FIR view fetched for fir_id=4726269
+2026-06-12 13:07:01,820 - INFO - Framing: 'بشیر  خان   ' → 3 accused section(s)
+2026-06-12 13:07:01,917 - WARNING - Framing failed 'بشیر  خان   ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:07:01,917 - INFO - Framing: 'عمران   ' → 3 accused section(s)
+2026-06-12 13:07:02,325 - WARNING - Framing failed 'عمران   ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:07:02,329 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:07:02,330 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:07:02,786 - INFO - ✅ 2 judgment entries
+2026-06-12 13:07:03,082 - INFO - ✅ Judgment updated: entry 7083483
+2026-06-12 13:07:03,336 - INFO - ✅ Judgment updated: entry 7083482
+2026-06-12 13:07:03,337 - INFO - ✅ Case complete: FIR 1811/2024 | Shafiqabad
+2026-06-12 13:07:03,840 - INFO - 
+============================================================
+FIR 3025/2024 | Shafiqabad | Offence: 381A/411 PPC | Decision: Acquitted
+============================================================
+2026-06-12 13:07:04,660 - INFO - ─── STEP 1: Prosecution ───
+2026-06-12 13:07:04,739 - ERROR - Prosecution failed: 422 {"message":"The given data was invalid.","errors":{"from":["The From Date must be a date after 2026-04-29."]}}
+2026-06-12 13:07:04,739 - WARNING - Prosecution failed — continuing
+2026-06-12 13:07:04,740 - INFO - ─── STEP 2: Court ───
+2026-06-12 13:07:04,896 - INFO - ✅ Court created
+2026-06-12 13:07:04,896 - INFO - ─── STEP 2.5: Framing of Charge ───
+2026-06-12 13:07:05,044 - INFO - FIR view fetched for fir_id=5128676
+2026-06-12 13:07:05,045 - INFO - Framing: 'Unknown' → 2 accused section(s)
+2026-06-12 13:07:05,126 - WARNING - Framing failed 'Unknown': 400 {"message":"Accused is Locked"}
+2026-06-12 13:07:05,126 - INFO - Framing: 'ارشد علی عرف بابو ' → 2 accused section(s)
+2026-06-12 13:07:05,553 - WARNING - Framing failed 'ارشد علی عرف بابو ': 400 {"message":"Accused is Locked"}
+2026-06-12 13:07:05,556 - WARNING - ⚠️  Framing of Charge: no accused succeeded — continuing
+2026-06-12 13:07:05,556 - INFO - ─── STEP 3: Judgment (Final Order) ───
+2026-06-12 13:07:05,945 - INFO - ✅ 2 judgment entries
+2026-06-12 13:07:06,157 - INFO - ✅ Judgment updated: entry 8683674
+2026-06-12 13:07:06,370 - INFO - ✅ Judgment updated: entry 8210129
+2026-06-12 13:07:06,370 - INFO - ✅ Case complete: FIR 3025/2024 | Shafiqabad
+2026-06-12 13:07:36,708 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.10.9:5000
+2026-06-12 13:07:36,708 - INFO - [33mPress CTRL+C to quit[0m
+2026-06-12 13:08:21,708 - INFO - ✅ 2 cookies loaded
+2026-06-12 13:08:23,208 - INFO - ✅ 768 police stations loaded
+2026-06-12 13:08:23,213 - INFO - 127.0.0.1 - - [12/Jun/2026 13:08:23] "POST /api/session-manual HTTP/1.1" 200 -
+2026-06-12 13:08:23,438 - INFO - 127.0.0.1 - - [12/Jun/2026 13:08:23] "GET /api/get-prosecutors HTTP/1.1" 200 -
+2026-06-12 13:12:08,568 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.10.9:5000
+2026-06-12 13:12:08,568 - INFO - [33mPress CTRL+C to quit[0m

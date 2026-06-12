@@ -240,6 +240,7 @@ def api_run():
 
     _state["stats"] = {"total": 0, "success": 0, "skip": 0, "invalid": 0}
     _state["running"] = True
+    _state.setdefault("done_lines", set())
 
     def runner():
         try:
@@ -248,10 +249,15 @@ def api_run():
                 line = line.strip()
                 if not line:
                     continue
+                if line in _state["done_lines"]:
+                    _state["stats"]["total"] += 1
+                    _state["stats"]["success"] += 1
+                    continue
                 _state["stats"]["total"] += 1
                 status = process_case(api, line)
                 if status == "COMPLETE":
                     _state["stats"]["success"] += 1
+                    _state["done_lines"].add(line)
                 elif status == "SKIP":
                     _state["stats"]["skip"] += 1
                 elif status == "INVALID":
