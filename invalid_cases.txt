@@ -8,3 +8,47 @@ The State  VS  Arif Ali	6	2026	489-F PPC	Gulshan Ravi	20-04-2026	Consign to Reco
 0  VS  0			0		14-04-2026	Disposed Off
 0  VS  0			0		14-04-2026	Disposed Off
 Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+The State  VS  Rizwan ul Haq	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+State  VS  Zeeshan Amin	59	2021	489-F PPC	Gulshan Ravi	21-04-2026	Acquitted Due to Compromised
+Muhammad Shabir  VS  Riasat Ali etc			489-F PPC	Gulshan Ravi	06-04-2026	Acquitted Due to Compromised
+The State  VS  Abdullah, Hassan	201	2026	379 PPC	Shafique Abad	16-04-2026	Acquitted
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+The State  VS  Rizwan ul Haq	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+State  VS  Zeeshan Amin	59	2021	489-F PPC	Gulshan Ravi	21-04-2026	Acquitted Due to Compromised
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+The State  VS  Rizwan ul Haq	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+The State  VS  Rizwan ul Haq	3276	2025	381-A/411 PPC	Shafique Abad	22-04-2026	Convicted
+Case Title	FIR No	FIR Year	Offence	Police Station Name	Decision Date	Decision Type
+The State  VS  Shocial Sattar	2482	2024	The Punjab Armed Ordinance 13	Shafique Abad	23-04-2026	Acquitted
+State  VS  Waqas	1119	2023	13-20-65	Gulshan Ravi	27-04-2026	Acquitted
+State  VS  Zahid Shoukat	663	2023	13-20-65	Gulshan Ravi	23-04-2026	Acquitted
+The State  VS  Muhammad Khan	1346	2022	381A/411 PPC	Gulshan Ravi	14-04-2026	Acquitted
+The State  VS  Abbas Ali, Sajjad Ali	66	2025	406 PPC	Gulshan Ravi	28-04-2026	Acquitted
+The State  VS  Muhammad Nouman	2157	2023	The punjab prohibition of sheesha smoking Act 2014-3	Shafique Abad	08-04-2026	Acquitted
+The State  VS  Dr Farhat Abbas	3154	2024	The Punjab Local Government Act 2022-7	Shafique Abad	21-04-2026	Acquitted
+The State  VS  Abbas Rouf, Aziz Ali	2120	2024	3/4 PEHO	Gulshan Ravi	07-04-2026	Acquitted
+The State  VS  Noor Ahmad	4531	2024	The Punjab Arms Ordinance, 1965-13	Shafique Abad	13-04-2026	Acquitted
+The State  VS  Tanveer Hamza, Mudasar Hussain, Muhammad Ali	700	2024	The Punjab price control of essential commodities ordinance 2023-6-7-10	Shafique Abad	08-04-2026	Acquitted
+The State  VS  Adrees, Hameed Ullah	1800	2024	The Punjab price control of essential commodities ordinance 2023-6-7-10	Shafique Abad	08-04-2026	Acquitted
+The State  VS  Bashir Khan, Imran	1811	2024	The Punjab price control of essential commodities ordinance 2023-6-7-10	Shafique Abad	23-04-2026	Acquitted
+The State  VS  Arshad Ali alias Babu	3025	2024	381A/411 PPC	Shafique Abad	29-04-2026	Acquitted
+The State  VS  Shocial Sattar	2482	2024	The Punjab Armed Ordinance 13	Shafique Abad	23-04-2026	Acquitted
+State  VS  Waqas	1119	2023	13-20-65	Gulshan Ravi	27-04-2026	Acquitted
+State  VS  Zahid Shoukat	663	2023	13-20-65	Gulshan Ravi	23-04-2026	Acquitted
+The State  VS  Muhammad Khan	1346	2022	381A/411 PPC	Gulshan Ravi	14-04-2026	Acquitted
+The State  VS  Abbas Ali, Sajjad Ali	66	2025	406 PPC	Gulshan Ravi	28-04-2026	Acquitted
+The State  VS  Muhammad Nouman	2157	2023	The punjab prohibition of sheesha smoking Act 2014-3	Shafique Abad	08-04-2026	Acquitted
+The State  VS  Dr Farhat Abbas	3154	2024	The Punjab Local Government Act 2022-7	Shafique Abad	21-04-2026	Acquitted
+The State  VS  Abbas Rouf, Aziz Ali	2120	2024	3/4 PEHO	Gulshan Ravi	07-04-2026	Acquitted
+The State  VS  Noor Ahmad	4531	2024	The Punjab Arms Ordinance, 1965-13	Shafique Abad	13-04-2026	Acquitted
+The State  VS  Tanveer Hamza, Mudasar Hussain, Muhammad Ali	700	2024	The Punjab price control of essential commodities ordinance 2023-6-7-10	Shafique Abad	08-04-2026	Acquitted
+The State  VS  Adrees, Hameed Ullah	1800	2024	The Punjab price control of essential commodities ordinance 2023-6-7-10	Shafique Abad	08-04-2026	Acquitted
+The State  VS  Bashir Khan, Imran	1811	2024	The Punjab price control of essential commodities ordinance 2023-6-7-10	Shafique Abad	23-04-2026	Acquitted
+The State  VS  Arshad Ali alias Babu	3025	2024	381A/411 PPC	Shafique Abad	29-04-2026	Acquitted

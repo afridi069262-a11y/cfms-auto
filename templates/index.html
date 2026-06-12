@@ -432,6 +432,17 @@ function setConn(on){
   document.getElementById('hdr-txt').textContent=on?'Connected':'Disconnected';
 }
 
+// Auto-save and restore input
+window.onload = function(){ 
+  const saved = localStorage.getItem('cfms_input');
+  if(saved) document.getElementById('inp').value = saved;
+  const savedCurl = localStorage.getItem('cfms_curl');
+  if(savedCurl) document.getElementById('curl-in').value = savedCurl;
+}
+document.addEventListener('input', function(e){
+  if(e.target.id === 'inp') localStorage.setItem('cfms_input', e.target.value);
+  if(e.target.id === 'curl-in') localStorage.setItem('cfms_curl', e.target.value);
+});
 async function runScript(){
   const data=document.getElementById('inp').value.trim();
   if(!data){alert('Data paste karo');return;}
@@ -518,6 +529,7 @@ function addLog(msg,ft){
 
 function updStats(s){
   if(!s)return;
+  document.getElementById('sb-tot').textContent=s.total;
   document.getElementById('sb-tot').textContent=s.total;
   document.getElementById('sb-ok').textContent=s.success;
   document.getElementById('sb-skip').textContent=s.skip;
